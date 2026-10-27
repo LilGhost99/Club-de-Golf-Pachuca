@@ -8,152 +8,176 @@
 <meta name="theme-color" content="#112E1D">
 <link rel="icon" href="img/cgp-verde.png">
 <link rel="preload" href="fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js')</script>
 <style>
 @font-face{font-family:"Libre Caslon Display";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/libre-caslon-display-latin-400-normal.woff2) format("woff2")}
-@font-face{font-family:"Libre Caslon Text";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/libre-caslon-text-latin-400-normal.woff2) format("woff2")}
-@font-face{font-family:"Libre Caslon Text";font-weight:400;font-style:italic;font-display:swap;src:url(fonts/libre-caslon-text-latin-400-italic.woff2) format("woff2")}
-@font-face{font-family:"Libre Caslon Text";font-weight:700;font-style:normal;font-display:swap;src:url(fonts/libre-caslon-text-latin-700-normal.woff2) format("woff2")}
 @font-face{font-family:"Libre Franklin";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/libre-franklin-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:"Libre Franklin";font-weight:500;font-style:normal;font-display:swap;src:url(fonts/libre-franklin-latin-500-normal.woff2) format("woff2")}
-@font-face{font-family:"Libre Franklin";font-weight:600;font-style:normal;font-display:swap;src:url(fonts/libre-franklin-latin-600-normal.woff2) format("woff2")}
 :root{
-  --pino:#112E1D; --pino-2:#183F28; --pino-3:#0C2216; --verde:#215C34;
+  --pino:#112E1D; --pino-3:#0C2216; --verde:#215C34;
   --bronce-claro:#D6A15A; --bronce-tx:#85501A; --vino:#7B1E26;
   --papel:#EDF0E5; --papel-2:#E0E6D4; --tinta:#14301F; --suave:#4A5D4E;
-  --linea:rgba(20,48,31,.22); --linea-clara:rgba(237,240,229,.22);
-  --serif-d:"Libre Caslon Display","Libre Caslon Text",Georgia,serif;
-  --serif:"Libre Caslon Text",Georgia,serif;
+  --serif:"Libre Caslon Display",Georgia,"Times New Roman",serif;
   --sans:"Libre Franklin",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --nav-h:68px; --gutter:clamp(20px,4vw,48px); --marco:clamp(14px,2vw,28px);
-  --alineo:calc((100vw - min(100vw,1180px))/2 + var(--gutter));
+  /* escala: seis tamaños */
+  --t-xl:clamp(2.9rem,8vw,6.6rem);
+  --t-l:clamp(2.2rem,4.6vw,3.6rem);
+  --t-m:clamp(1.5rem,2.8vw,2.3rem);
+  --t-s:clamp(1.15rem,1.5vw,1.3rem);
+  --t-b:1.0625rem;
+  --t-xs:.875rem;
+  --nav-h:68px; --gutter:clamp(20px,4vw,48px); --marco:clamp(14px,2vw,28px); --ancho:1320px;
+  --alineo:calc((100vw - min(100vw,var(--ancho)))/2 + var(--gutter));
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
-body{margin:0;background:var(--papel);color:var(--tinta);font:400 1.125rem/1.65 var(--serif);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;background:var(--papel);color:var(--tinta);font:400 var(--t-b)/1.65 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img,video{display:block;max-width:100%}
 figure img{height:auto}
+main{overflow-x:clip}
 a{color:inherit}
 h1,h2,h3,p,figure,dl,dd,ul{margin:0}
 ul{padding:0;list-style:none}
 :focus-visible{outline:3px solid var(--bronce-claro);outline-offset:3px}
-.wrap{max-width:1180px;margin-inline:auto;padding-inline:var(--gutter)}
+.wrap{max-width:var(--ancho);margin-inline:auto;padding-inline:var(--gutter)}
 .sec{padding-block:clamp(72px,10vw,136px)}
 .sec--pino{background:var(--pino);color:var(--papel)}
 .sec--papel2{background:var(--papel-2)}
-h2{font:400 clamp(2.05rem,4.4vw,3.4rem)/1.08 var(--serif-d);letter-spacing:-.012em}
-.lead{font-size:clamp(1.12rem,1.6vw,1.3rem);max-width:58ch}
+h2{font:400 var(--t-l)/1.1 var(--serif);letter-spacing:-.012em}
+h3{font:400 var(--t-m)/1.15 var(--serif)}
+.lead{font-size:var(--t-s);line-height:1.55;max-width:54ch}
+.prosa{max-width:54ch}
 .prosa p+p{margin-top:1.1em}
-.prosa{max-width:58ch}
 .suave{color:var(--suave)}
-.sec--pino .suave{color:rgba(237,240,229,.72)}
+.sec--pino .suave{color:rgba(237,240,229,.74)}
+.ln-mask{padding-bottom:.14em;margin-bottom:-.14em}
+.js .hero h1,.js [data-split]{visibility:hidden}
 
 /* botones */
-.btn{display:inline-flex;align-items:center;justify-content:center;font:500 .95rem/1 var(--sans);padding:15px 24px;border:1.5px solid transparent;border-radius:2px;text-decoration:none;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;font:500 var(--t-b)/1 var(--sans);padding:16px 26px;border:1.5px solid transparent;border-radius:2px;text-decoration:none;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
 .btn--bronce{background:var(--bronce-claro);color:var(--pino)}
 .btn--bronce:hover{background:#E4B572}
-.btn--linea{border-color:rgba(255,255,255,.65);color:#fff}
-.btn--linea:hover{background:rgba(255,255,255,.12)}
+.btn--linea{border-color:rgba(255,255,255,.7);color:#fff}
+.btn--linea:hover{background:rgba(255,255,255,.14)}
 .btn--vino{background:var(--vino);color:#fff}
 .btn--vino:hover{background:#912631}
-.enlace{font:500 .95rem/1.2 var(--sans);color:var(--vino);text-underline-offset:4px}
+.enlace{font:500 var(--t-b)/1.2 var(--sans);color:var(--vino);text-underline-offset:4px;transition:color .2s}
+.enlace:hover{color:var(--verde)}
 .sec--pino .enlace{color:var(--bronce-claro)}
 
 /* navegación */
-.nav{position:fixed;inset:0 0 auto 0;height:var(--nav-h);z-index:50;display:flex;align-items:center;gap:32px;padding-inline:var(--gutter);color:#fff;background:linear-gradient(rgba(17,46,29,.62),rgba(17,46,29,0));transition:background-color .3s}
-.nav.is-solid{background:rgba(17,46,29,.95);backdrop-filter:blur(6px)}
+.nav{position:fixed;inset:0 0 auto 0;height:var(--nav-h);z-index:50;display:flex;align-items:center;gap:32px;padding-inline:var(--gutter);color:#fff;background:var(--pino)}
 .nav__marca{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto}
 .nav__marca img{height:34px;width:auto}
-.nav__marca span{font:400 1.08rem/1 var(--serif);white-space:nowrap}
+.nav__marca span{font:500 var(--t-b)/1 var(--sans);white-space:nowrap}
 .nav__links{display:flex;gap:28px}
-.nav__links a{font:400 .92rem/1 var(--sans);text-decoration:none;color:rgba(255,255,255,.9);padding-block:8px;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .25s}
-.nav__links a:hover{background-size:100% 1px}
-.nav .btn{padding:12px 18px;font-size:.9rem}
-.nav__menu{display:none;font:500 .9rem/1 var(--sans);background:none;color:#fff;border:1.5px solid rgba(255,255,255,.6);border-radius:2px;padding:11px 14px;cursor:pointer}
+.nav__links a{font:400 var(--t-b)/1 var(--sans);text-decoration:none;color:rgba(255,255,255,.88);padding-block:8px;transition:color .2s}
+.nav__links a:hover{color:var(--bronce-claro)}
+.nav .btn{padding:12px 18px}
+.nav__menu{display:none;font:500 var(--t-b)/1 var(--sans);background:none;color:#fff;border:1.5px solid rgba(255,255,255,.6);border-radius:2px;padding:11px 14px;cursor:pointer}
 .panel{display:none}
 
 /* portada */
 .hero{position:relative;height:clamp(620px,92vh,860px);background:var(--pino);overflow:hidden;color:#fff}
+.hero__media{position:absolute;inset:0}
 .hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero__sombra{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,46,29,.2) 0%,rgba(17,46,29,0) 30%,rgba(17,46,29,0) 48%,rgba(17,46,29,.82) 100%)}
-.frame{position:absolute;z-index:2;top:calc(var(--nav-h) + 52px);left:var(--marco);right:var(--marco);bottom:var(--marco);pointer-events:none;--w:2px;--gap:48px}
+.hero__sombra{position:absolute;inset:0;background:rgba(6,20,12,.3)}
+.frame{position:absolute;z-index:2;top:calc(var(--nav-h) + 52px);left:var(--marco);right:var(--marco);bottom:var(--marco);pointer-events:none;--w:2px;--gap:48px;--ce:88px}
 .fl{position:absolute;display:block;background:var(--bronce-claro)}
 .fl-tl,.fl-tr{top:0;height:var(--w);width:calc(50% - var(--gap))}
-.fl-tl{left:0;transform-origin:right center;animation:trazo-x .7s .3s both cubic-bezier(.6,0,.2,1)}
-.fl-tr{right:0;transform-origin:left center;animation:trazo-x .7s .3s both cubic-bezier(.6,0,.2,1)}
-.fl-l,.fl-r{top:0;width:var(--w);height:100%;transform-origin:top;animation:trazo-y .9s .85s both cubic-bezier(.6,0,.2,1)}
+.fl-tl{left:0;transform-origin:right center}
+.fl-tr{right:0;transform-origin:left center}
+.fl-l,.fl-r{top:0;width:var(--w);height:100%;transform-origin:top}
 .fl-l{left:0}
 .fl-r{right:0}
-.fl-b{bottom:0;left:0;width:100%;height:var(--w);transform-origin:center;animation:trazo-x .7s 1.55s both cubic-bezier(.6,0,.2,1)}
-.frame__escudo{position:absolute;top:0;left:50%;height:88px;width:auto;transform:translate(-50%,-50%);filter:drop-shadow(0 2px 10px rgba(0,0,0,.4));animation:baja .9s .1s both ease-out}
-@keyframes trazo-x{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes trazo-y{from{transform:scaleY(0)}to{transform:scaleY(1)}}
-@keyframes baja{from{opacity:0;transform:translate(-50%,-85%)}to{opacity:1;transform:translate(-50%,-50%)}}
-.hero__cuerpo{--pad:clamp(20px,3.4vw,52px);position:absolute;z-index:3;left:calc(var(--marco) + var(--pad));right:calc(var(--marco) + var(--pad));bottom:calc(var(--marco) + var(--pad));display:flex;align-items:flex-end;justify-content:space-between;gap:28px 40px;flex-wrap:wrap}
-.hero h1{font:400 clamp(2.9rem,8vw,6.6rem)/.96 var(--serif-d);letter-spacing:-.015em;text-shadow:0 2px 28px rgba(0,0,0,.35)}
-.hero__meta{display:flex;align-items:center;gap:14px;margin-top:22px;font:400 1rem/1.3 var(--sans);flex-wrap:wrap}
+.fl-b{bottom:0;left:0;width:100%;height:var(--w);transform-origin:center}
+.frame__escudo{position:absolute;top:calc(var(--ce) / -2);left:50%;height:var(--ce);width:calc(var(--ce) * 63 / 88);margin-left:calc(var(--ce) * 63 / 176 * -1)}
+.hero__cuerpo{--pad:clamp(20px,3.4vw,52px);position:absolute;z-index:3;left:max(calc(var(--marco) + var(--pad)),var(--alineo));right:max(calc(var(--marco) + var(--pad)),var(--alineo));bottom:calc(var(--marco) + var(--pad));display:flex;align-items:flex-end;justify-content:space-between;gap:28px 40px;flex-wrap:wrap}
+.hero h1{font:400 var(--t-xl)/.96 var(--serif);letter-spacing:-.015em}
+.hero__meta{display:flex;align-items:baseline;gap:8px 22px;margin-top:22px;font:400 var(--t-s)/1.3 var(--sans);flex-wrap:wrap}
 .hero__meta b{font-weight:500;color:var(--bronce-claro);letter-spacing:.03em}
-.hero__meta i{display:block;width:44px;height:2px;background:var(--bronce-claro)}
 .hero__acciones{display:flex;gap:12px;flex-wrap:wrap}
 
 /* historia */
-.historia{display:grid;grid-template-columns:5fr 6fr;gap:clamp(36px,6vw,96px);align-items:center}
-.historia h2{margin-bottom:28px;max-width:14ch}
-.historia figure img{width:100%;aspect-ratio:4/3.2;object-fit:cover;object-position:50% 60%}
-figcaption{font:400 .86rem/1.4 var(--sans);color:var(--suave);margin-top:12px}
+.historia{display:grid;grid-template-columns:6fr 5fr;gap:clamp(36px,6vw,104px);align-items:center}
+.historia h2{margin-bottom:28px}
+.tile{position:relative;overflow:hidden;background:var(--papel-2)}
+.tile img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover}
+.historia .tile{aspect-ratio:5/4.4}
+.historia .tile img{object-position:50% 60%}
+figcaption{font:400 var(--t-xs)/1.4 var(--sans);color:var(--suave);margin-top:12px}
+
+/* cabecera en dos columnas (campo, clases) */
+.cab{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center}
 
 /* campo */
-.campo{display:grid;grid-template-columns:5fr 6fr;gap:clamp(36px,6vw,96px);align-items:start}
-.campo h2{margin-bottom:24px}
-.datos{border-top:5px double var(--tinta)}
-.datos div{display:grid;grid-template-columns:minmax(120px,.7fr) 1.6fr;gap:16px;align-items:baseline;padding:17px 0;border-bottom:1px solid var(--linea)}
-.datos dt{font:500 .86rem/1.3 var(--sans);color:var(--suave)}
-.datos dd{font:400 1.3rem/1.3 var(--serif);font-variant-numeric:lining-nums tabular-nums}
-.galeria-barra{display:flex;justify-content:space-between;align-items:end;margin-top:clamp(56px,7vw,96px);margin-bottom:20px}
-.galeria-barra p{font:400 .95rem/1.3 var(--sans);color:var(--suave)}
-.galeria-botones{display:flex;gap:8px}
-.galeria-botones button{width:46px;height:46px;border-radius:2px;border:1.5px solid var(--tinta);background:none;color:var(--tinta);font:500 1.1rem/1 var(--sans);cursor:pointer}
-.galeria-botones button:hover{background:var(--tinta);color:var(--papel)}
-.tira{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-inline:var(--alineo);padding-inline:var(--alineo);padding-bottom:14px;scrollbar-width:thin;scrollbar-color:var(--verde) transparent}
-.tira figure{flex:none;scroll-snap-align:start}
-.tira img{height:clamp(240px,34vw,440px);width:auto;background:var(--papel-2)}
-.tira figcaption{max-width:34ch}
-.tira-espacio{flex:none;width:1px}
+.cifras{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(28px,4vw,56px);margin-top:clamp(56px,7vw,104px)}
+.cifras li{display:grid;gap:12px;align-content:start}
+.cifras b{font:400 var(--t-xl)/1 var(--serif);color:var(--verde);font-variant-numeric:lining-nums tabular-nums}
+.cifras span{font-size:var(--t-b);line-height:1.45;color:var(--suave);max-width:24ch}
+.mosaico{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(150px,18vw,260px);gap:clamp(8px,1.2vw,16px);margin-top:clamp(56px,7vw,104px)}
+.t-a{grid-column:1/8;grid-row:1/3}
+.t-b{grid-column:8/13;grid-row:1}
+.t-c{grid-column:8/13;grid-row:2}
+.t-d{grid-column:1/5;grid-row:3}
+.t-e{grid-column:5/9;grid-row:3}
+.t-f{grid-column:9/13;grid-row:3}
 
 /* clases */
-.clases{display:grid;grid-template-columns:6fr 5fr;gap:clamp(36px,6vw,96px);align-items:center}
-.clases img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:30% 50%}
-.clases h2{margin-bottom:24px}
-.niveles{display:flex;flex-wrap:wrap;gap:8px 10px;margin:28px 0 34px}
-.niveles li{font:500 .9rem/1 var(--sans);padding:10px 14px;border:1.5px solid var(--tinta);border-radius:2px}
+.niveles{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 32px}
+.niveles li{font:500 var(--t-b)/1 var(--sans);padding:12px 16px;background:var(--papel-2);border-radius:2px}
+.banda{margin-top:clamp(48px,6vw,88px);margin-inline:calc(50% - 50vw)}
+.banda figcaption{margin-left:var(--alineo)}
+.banda .tile{aspect-ratio:2.2/1}
+.banda .tile img{object-position:30% 58%}
 
 /* torneos */
-.torneos{display:grid;grid-template-columns:5fr 6fr;gap:clamp(36px,6vw,96px);align-items:start}
-.torneos img{width:100%;aspect-ratio:4/3.3;object-fit:cover;object-position:50% 40%}
-.torneos h2{margin-bottom:12px}
-.agenda{margin-top:34px;border-top:5px double var(--tinta)}
-.agenda li{padding:22px 0;border-bottom:1px solid var(--linea);display:grid;grid-template-columns:minmax(120px,.7fr) 1.6fr;gap:16px}
-.agenda time{font:500 .9rem/1.4 var(--sans);color:var(--bronce-tx)}
-.agenda h3{font:400 1.55rem/1.2 var(--serif-d);margin-bottom:6px}
-.agenda p{font-size:1rem;line-height:1.55;color:var(--suave)}
+.torneos{display:grid;grid-template-columns:5fr 6fr;grid-template-areas:"fig txt";gap:clamp(36px,6vw,104px);align-items:center}
+.torneos figure{grid-area:fig}
+.torneos>div{grid-area:txt}
+.torneos .tile{aspect-ratio:4/4.6}
+.torneos .tile img{object-position:50% 40%}
+.torneos h2{margin-bottom:18px}
+.agenda{margin-top:34px}
+.agenda li{background:var(--papel);padding:26px 28px;display:grid;grid-template-columns:minmax(120px,.6fr) 1.6fr;gap:16px}
+.agenda li+li{margin-top:12px}
+.agenda time{font:500 var(--t-b)/1.4 var(--sans);color:var(--bronce-tx)}
+.agenda h3{margin-bottom:8px}
+.agenda p{line-height:1.55;color:var(--suave)}
 .agenda .pasado time{color:var(--suave)}
 
-/* después de la vuelta */
-.amen{display:grid;grid-template-columns:5fr 6fr;gap:clamp(36px,6vw,96px);align-items:start}
-.amen h2{margin-bottom:22px;max-width:12ch}
-.amen ul{border-top:1px solid var(--linea-clara)}
-.amen li{padding:20px 0;border-bottom:1px solid var(--linea-clara)}
-.amen li strong{display:block;font:400 clamp(1.6rem,3vw,2.35rem)/1.1 var(--serif-d)}
-.amen li span{display:block;margin-top:6px;font:400 .95rem/1.4 var(--sans);color:rgba(237,240,229,.72)}
+/* después de la vuelta: foto de fondo con velo plano */
+.sec--foto{position:relative;overflow:hidden;background:var(--pino);color:var(--papel);padding-block:clamp(96px,14vw,184px)}
+.fondo{position:absolute;inset:0}
+.fondo::after{content:"";position:absolute;inset:0;background:rgba(6,20,12,.62)}
+.fondo img{position:absolute;left:0;top:-10%;width:100%;height:120%;object-fit:cover}
+.sec--foto .wrap{position:relative;z-index:1}
+.sec--foto .suave{color:rgba(237,240,229,.86)}
+.amen{display:grid;grid-template-columns:5fr 6fr;gap:clamp(36px,6vw,104px);align-items:center}
+.amen .lead{margin-top:20px}
+.resumen{font:400 var(--t-m)/1.2 var(--serif)}
+.resumen li+li{margin-top:clamp(12px,1.6vw,20px)}
+
+/* visor de fotos */
+.tile[role=button]{cursor:zoom-in}
+.visor{border:0;padding:0;margin:0;max-width:none;max-height:none;width:100vw;height:100dvh;background:rgba(6,20,12,.96);color:#fff}
+.visor[open]{display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:1fr auto;align-items:center;gap:12px;padding:20px}
+.visor img{grid-column:2;grid-row:1;justify-self:center;max-width:100%;max-height:calc(100dvh - 120px);width:auto;height:auto;object-fit:contain}
+.visor__pie{grid-column:2;grid-row:2;justify-self:center;text-align:center;max-width:70ch;font-size:var(--t-xs);line-height:1.5;color:rgba(237,240,229,.82)}
+.visor button{font:500 var(--t-b)/1 var(--sans);background:none;color:#fff;border:1.5px solid rgba(255,255,255,.6);border-radius:2px;min-width:48px;height:48px;padding:0 14px;cursor:pointer;transition:background-color .2s}
+.visor button:hover{background:rgba(255,255,255,.14)}
+.visor__ant{grid-column:1;grid-row:1}
+.visor__sig{grid-column:3;grid-row:1}
+.visor__x{position:absolute;top:16px;right:16px}
 
 /* tarifas */
-.tarifas-cab{max-width:60ch;margin-bottom:44px}
+.tarifas-cab{max-width:60ch;margin-bottom:clamp(36px,5vw,56px)}
 .tarifas-cab h2{margin-bottom:18px}
-.tarifas{border-top:5px double var(--tinta)}
-.tarifas li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.5fr) 110px 96px;gap:12px 28px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--linea)}
+.tarifas li{background:var(--papel-2);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.5fr) 110px 96px;gap:12px 28px;align-items:baseline;padding:30px 32px}
+.tarifas li+li{margin-top:10px}
 .tarifas li .enlace{justify-self:end}
-.tarifas h3{font:400 clamp(1.5rem,2.4vw,2rem)/1.15 var(--serif-d)}
-.tarifas p{font-size:1rem;line-height:1.5;color:var(--suave)}
-.precio{font:500 1rem/1.2 var(--sans)}
+.tarifas p{line-height:1.5;color:var(--suave)}
+.precio{font:500 var(--t-b)/1.2 var(--sans)}
 .precio--pendiente{color:var(--suave)}
 
 /* contacto */
@@ -162,21 +186,23 @@ figcaption{font:400 .86rem/1.4 var(--sans);color:var(--suave);margin-top:12px}
 .form{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .campo-f{display:grid;gap:7px}
 .campo-f--ancho{grid-column:1/-1}
-.form label{font:500 .88rem/1.2 var(--sans);color:rgba(237,240,229,.85)}
-.form input,.form select{font:400 1rem/1.2 var(--sans);color:#fff;background:rgba(255,255,255,.08);border:1.5px solid rgba(237,240,229,.38);border-radius:2px;padding:14px;width:100%;color-scheme:dark}
+.form label{font:500 var(--t-xs)/1.2 var(--sans);color:rgba(237,240,229,.85)}
+.form input,.form select{font:400 var(--t-b)/1.2 var(--sans);color:#fff;background:rgba(255,255,255,.08);border:1.5px solid rgba(237,240,229,.38);border-radius:2px;padding:14px;width:100%;color-scheme:dark;transition:border-color .2s,background-color .2s}
+.form input:focus,.form select:focus{border-color:var(--bronce-claro);background:rgba(255,255,255,.12);outline:0}
 .form input::placeholder{color:rgba(237,240,229,.5)}
 .form select option{color:#111;background:#fff}
 .form .btn{grid-column:1/-1;justify-self:start;margin-top:6px}
-.form__nota{grid-column:1/-1;font:400 .85rem/1.5 var(--sans);color:rgba(237,240,229,.7)}
-.visita h3{font:400 1.6rem/1.2 var(--serif-d);margin-bottom:18px}
-.visita address{font-style:normal;font-size:1.15rem;line-height:1.6}
-.visita ul{margin-top:26px;border-top:1px solid var(--linea-clara)}
-.visita li{padding:14px 0;border-bottom:1px solid var(--linea-clara);display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:baseline}
-.visita li span{font:500 .85rem/1.3 var(--sans);color:rgba(237,240,229,.7)}
-.visita li a{font-size:1.15rem;text-underline-offset:4px}
-.visita .btn{margin-top:28px}
+.form__nota{grid-column:1/-1;font-size:var(--t-xs);line-height:1.5;color:rgba(237,240,229,.72)}
+.clima{margin-top:16px;font-size:var(--t-b);color:var(--bronce-claro)}
+.visita h3{margin-bottom:18px}
+.visita address{font-style:normal;font-size:var(--t-s);line-height:1.55}
+.visita ul{margin-top:30px;display:grid;gap:22px}
+.visita li{display:grid;gap:2px}
+.visita li span{font-size:var(--t-xs);color:rgba(237,240,229,.72)}
+.visita li a{font-size:var(--t-s);text-underline-offset:4px}
+.visita .btn{margin-top:32px}
 
-footer{background:var(--pino-3);color:rgba(237,240,229,.78);padding-block:34px;font:400 .88rem/1.55 var(--sans)}
+footer{background:var(--pino-3);color:rgba(237,240,229,.78);padding-block:34px;font:400 var(--t-xs)/1.55 var(--sans)}
 footer .wrap{display:flex;align-items:center;gap:18px 28px;flex-wrap:wrap;justify-content:space-between}
 footer img{height:46px;width:auto}
 footer p{max-width:62ch}
@@ -187,14 +213,18 @@ footer p{max-width:62ch}
   .nav__links{display:none}
   .nav .btn{display:none}
   .nav__menu{display:inline-block}
-  .panel{position:fixed;z-index:49;top:var(--nav-h);left:0;right:0;background:var(--pino);padding:8px var(--gutter) 28px;border-top:1px solid var(--linea-clara)}
+  .panel{position:fixed;z-index:49;top:var(--nav-h);left:0;right:0;background:var(--pino);padding:12px var(--gutter) 30px}
   .panel.is-abierto{display:block}
-  .panel a{display:block;color:#fff;text-decoration:none;font:400 1.5rem/1 var(--serif-d);padding:18px 0;border-bottom:1px solid var(--linea-clara)}
-  .panel .btn{margin-top:22px;display:inline-flex;font:500 .95rem/1 var(--sans);border-bottom:0}
-  .historia,.campo,.clases,.torneos,.amen,.contacto{grid-template-columns:1fr}
-  .historia h2{max-width:none}
-  .clases figure{order:-1}
-  .tarifas li{grid-template-columns:1fr auto;gap:8px 20px}
+  .panel a{display:block;color:#fff;text-decoration:none;font:400 var(--t-m)/1 var(--serif);padding:15px 0}
+  .panel .btn{margin-top:22px;display:inline-flex;font:500 var(--t-b)/1 var(--sans)}
+  .historia,.cab,.contacto,.amen{grid-template-columns:1fr}
+  .resumen{display:grid;grid-template-columns:1fr 1fr;gap:16px 32px}
+  .resumen li+li{margin-top:0}
+  .torneos{grid-template-columns:1fr;grid-template-areas:"txt" "fig"}
+  .historia .tile{aspect-ratio:4/3}
+  .torneos .tile{aspect-ratio:4/3}
+  .cifras{grid-template-columns:repeat(2,1fr)}
+  .tarifas li{grid-template-columns:1fr auto;gap:8px 20px;padding:26px 24px}
   .tarifas li h3{grid-column:1;grid-row:1}
   .tarifas li .precio{grid-column:2;grid-row:1}
   .tarifas li p{grid-column:1/-1;grid-row:2}
@@ -202,20 +232,24 @@ footer p{max-width:62ch}
 }
 @media (max-width:620px){
   :root{--nav-h:60px}
-  .nav__marca span{font-size:.98rem}
   .hero{height:clamp(600px,100svh,780px)}
-  .frame{top:calc(var(--nav-h) + 44px);--gap:44px}
-  .frame__escudo{height:74px}
+  .frame{top:calc(var(--nav-h) + 44px);--gap:44px;--ce:74px}
   .hero__acciones{width:100%}
   .hero__acciones .btn{flex:1 1 auto}
-  .datos div,.agenda li{grid-template-columns:1fr;gap:4px}
+  .agenda li{grid-template-columns:1fr;gap:4px;padding:22px 20px}
   .form{grid-template-columns:1fr}
-  .visita li{grid-template-columns:1fr;gap:2px}
-  .galeria-botones{display:none}
+  .mosaico{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
+  .mosaico .tile{aspect-ratio:1/1}
+  .mosaico .t-a,.mosaico .t-d{grid-column:1/-1;aspect-ratio:16/10}
+  .mosaico .t-a,.mosaico .t-b,.mosaico .t-c,.mosaico .t-d,.mosaico .t-e,.mosaico .t-f{grid-row:auto}
+  .mosaico .t-b,.mosaico .t-c,.mosaico .t-e,.mosaico .t-f{grid-column:auto}
+  .banda .tile{aspect-ratio:4/3}
+  .visor[open]{padding:12px;gap:6px}
+  .visor button{min-width:40px;height:40px;padding:0 10px}
+  .resumen{grid-template-columns:1fr;gap:12px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .fl,.frame__escudo{animation:none}
 }
 </style>
 </head>
@@ -249,9 +283,11 @@ footer p{max-width:62ch}
 
 <main>
 <section class="hero" id="inicio" aria-label="Club de Golf Pachuca">
-  <video class="hero__video" id="film" autoplay muted loop playsinline preload="auto" poster="media/campo-poster.jpg" aria-hidden="true">
-    <source src="media/campo.mp4" type="video/mp4">
-  </video>
+  <div class="hero__media">
+    <video class="hero__video" id="film" autoplay muted loop playsinline preload="auto" poster="media/campo-poster.jpg" aria-hidden="true">
+      <source src="media/campo.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero__sombra"></div>
   <div class="frame" aria-hidden="true">
     <i class="fl fl-tl"></i><i class="fl fl-tr"></i><i class="fl fl-l"></i><i class="fl fl-r"></i><i class="fl fl-b"></i>
@@ -260,7 +296,7 @@ footer p{max-width:62ch}
   <div class="hero__cuerpo">
     <div>
       <h1>Club de Golf<br>Pachuca</h1>
-      <p class="hero__meta"><b>Desde 1906</b><i></i><span>El primer campo de golf de México</span></p>
+      <p class="hero__meta"><b>Desde 1906</b><span>El primer campo de golf de México</span></p>
     </div>
     <div class="hero__acciones">
       <a class="btn btn--bronce" href="#contacto">Reservar salida</a>
@@ -272,83 +308,60 @@ footer p{max-width:62ch}
 <section class="sec" id="historia">
   <div class="wrap historia">
     <div>
-      <h2>Más de un siglo jugando golf en Pachuca</h2>
+      <h2 data-split>Más de un siglo de golf</h2>
       <div class="prosa">
         <p class="lead">Desde 1906, el Club de Golf Pachuca es el primer campo de golf de México y un recuerdo vivo de la influencia británica en Hidalgo.</p>
         <p>Hoy es un campo abierto al público. Puedes jugar un día, tomar clases, competir en los torneos del club o hacerte socio. Al terminar la vuelta, el restaurante y el Hoyo 19 siguen esperando.</p>
       </div>
     </div>
     <figure>
-      <img src="img/salida-kiosco.jpg" alt="Un golfista termina su swing en la salida; detrás se ve el kiosco verde del marshal, con techo de teja." width="1600" height="1060" loading="lazy">
+      <div class="tile"><img src="img/salida-kiosco.jpg" alt="Un golfista termina su swing en la salida; detrás se ve el kiosco verde del marshal, con techo de teja." width="1600" height="1060" loading="lazy"></div>
       <figcaption>El kiosco del marshal, junto a la salida.</figcaption>
     </figure>
   </div>
 </section>
 
 <section class="sec sec--papel2" id="campo">
-  <div class="wrap campo">
-    <div>
-      <h2>Nueve hoyos, dos vueltas</h2>
-      <p class="lead">Se juegan los nueve hoyos dos veces para completar las 18, entre pinos, cipreses y lagos, con las montañas de Pachuca al fondo.</p>
+  <div class="wrap">
+    <div class="cab">
+      <h2 data-split>Nueve hoyos, dos vueltas</h2>
+      <p class="lead">Se juegan los nueve hoyos dos veces para completar las 18, entre pinos, cipreses y lagos que embellecen y complican el recorrido, con las montañas de Pachuca al fondo.</p>
     </div>
-    <dl class="datos">
-      <div><dt>Hoyos</dt><dd>9, con dos vueltas para completar 18</dd></div>
-      <div><dt>Recorrido completo</dt><dd>7,178 yardas</dd></div>
-      <div><dt>Lagos</dt><dd>Embellecen y complican el recorrido</dd></div>
-      <div><dt>Profesionales</dt><dd>3, para clases y cuidado del campo</dd></div>
-      <div><dt>Acceso</dt><dd>Campo abierto al público</dd></div>
-    </dl>
-  </div>
 
-  <div class="wrap galeria-barra">
-    <p>Desliza para ver más del campo</p>
-    <div class="galeria-botones">
-      <button type="button" id="ant" aria-label="Fotos anteriores">←</button>
-      <button type="button" id="sig" aria-label="Fotos siguientes">→</button>
+    <ul class="cifras">
+      <li><b data-n="1906" data-from="1800">1906</b><span>El primer campo de golf de México</span></li>
+      <li><b data-n="9" data-from="0">9</b><span>Hoyos, con dos vueltas para completar 18</span></li>
+      <li><b data-n="7178" data-from="0" data-sep="1">7,178</b><span>Yardas en el recorrido completo</span></li>
+      <li><b data-n="3" data-from="0">3</b><span>Profesionales, para clases y cuidado del campo</span></li>
+    </ul>
+
+    <div class="mosaico">
+      <figure class="tile t-a"><img src="img/dron-arcos.jpg" alt="Vista de dron sobre el lago, con los arcos de piedra y patos en el agua." width="1120" height="590" loading="lazy"></figure>
+      <figure class="tile t-b"><img src="img/putt-bandera-azul.jpg" alt="Una jugadora hace un putt en el green mientras un caddie sostiene la bandera azul; al fondo, una calle larga flanqueada de árboles." width="1600" height="1060" loading="lazy"></figure>
+      <figure class="tile t-c"><img src="img/lago-montanas.jpg" alt="Jugadores en el green junto a un lago, con las montañas de Pachuca al fondo." width="1600" height="1060" loading="lazy"></figure>
+      <figure class="tile t-d"><img src="img/dron-green.jpg" alt="Vista de dron de un green con dos búnkers, rodeado de árboles; al fondo se ve la ciudad." width="1120" height="590" loading="lazy"></figure>
+      <figure class="tile t-e"><img src="img/arcos-swing.jpg" alt="Un golfista termina su swing sobre la calle; detrás se ven cipreses y un arco de piedra." width="1600" height="1060" loading="lazy"></figure>
+      <figure class="tile t-f"><img src="img/fairway-nublado.jpg" alt="Una calle larga entre pinos, bajo un cielo nublado, con carritos de golf al fondo." width="1600" height="1060" loading="lazy"></figure>
     </div>
-  </div>
-  <div class="tira" id="tira" tabindex="0" role="region" aria-label="Galería del campo">
-    <figure>
-      <img src="img/dron-arcos.jpg" alt="Vista de dron sobre el lago, con los arcos de piedra y patos en el agua." width="1120" height="590" loading="lazy">
-      <figcaption>Los arcos de piedra sobre el lago.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/putt-bandera-azul.jpg" alt="Una jugadora hace un putt en el green mientras un caddie sostiene la bandera azul; al fondo, una calle larga flanqueada de árboles." width="1600" height="1060" loading="lazy">
-    </figure>
-    <figure>
-      <img src="img/lago-montanas.jpg" alt="Jugadores en el green junto a un lago, con las montañas de Pachuca al fondo." width="1600" height="1060" loading="lazy">
-    </figure>
-    <figure>
-      <img src="img/dron-green.jpg" alt="Vista de dron de un green con dos búnkers, rodeado de árboles; al fondo se ve la ciudad." width="1120" height="590" loading="lazy">
-      <figcaption>Un green con dos búnkers, visto desde arriba.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/arcos-swing.jpg" alt="Un golfista termina su swing sobre la calle; detrás se ven cipreses y un arco de piedra." width="1600" height="1060" loading="lazy">
-    </figure>
-    <figure>
-      <img src="img/fairway-nublado.jpg" alt="Una calle larga entre pinos, bajo un cielo nublado, con carritos de golf al fondo." width="1600" height="1060" loading="lazy">
-    </figure>
-    <figure>
-      <img src="img/dron-lago.jpg" alt="Vista de dron de un lago pequeño entre las calles del campo, con la ciudad al fondo." width="1120" height="590" loading="lazy">
-    </figure>
-    <span class="tira-espacio" aria-hidden="true"></span>
   </div>
 </section>
 
 <section class="sec" id="clases">
-  <div class="wrap clases">
-    <div>
-      <h2>Aprende a jugar aquí</h2>
-      <p class="lead">Los tres profesionales del club dan clases y clínicas abiertas, para niños y adultos.</p>
-      <ul class="niveles" aria-label="Niveles">
-        <li>Principiantes, sin experiencia</li>
-        <li>Nivel medio</li>
-        <li>Avanzados</li>
-      </ul>
-      <a class="btn btn--vino" href="#contacto">Preguntar por clases</a>
+  <div class="wrap">
+    <div class="cab">
+      <h2 data-split>Aprende a jugar aquí</h2>
+      <div class="clases-der">
+        <p class="lead">Los tres profesionales del club dan clases y clínicas abiertas, para niños y adultos.</p>
+        <ul class="niveles" aria-label="Niveles">
+          <li>Principiantes, sin experiencia</li>
+          <li>Nivel medio</li>
+          <li>Avanzados</li>
+        </ul>
+        <a class="btn btn--vino" href="#contacto">Preguntar por clases</a>
+      </div>
     </div>
-    <figure>
-      <img src="img/campo-practica.jpg" alt="Golfistas practicando en el campo de práctica, sobre tapetes verdes y bajo los pinos." width="1600" height="1060" loading="lazy">
+    <figure class="banda">
+      <div class="tile"><img src="img/campo-practica.jpg" alt="Golfistas practicando en el campo de práctica, sobre tapetes verdes y bajo los pinos." width="1600" height="1060" loading="lazy"></div>
       <figcaption>El campo de práctica, una mañana de clínica.</figcaption>
     </figure>
   </div>
@@ -356,12 +369,8 @@ footer p{max-width:62ch}
 
 <section class="sec sec--papel2" id="torneos">
   <div class="wrap torneos">
-    <figure>
-      <img src="img/podio-cuna.jpg" alt="Primer y segundo lugar del Torneo Anual Cuna del Golf 2026 con sus trofeos, frente a la lona de patrocinadores." width="1600" height="1066" loading="lazy">
-      <figcaption>Podio del Torneo Anual Cuna del Golf 2026.</figcaption>
-    </figure>
     <div>
-      <h2>Torneos</h2>
+      <h2 data-split>Torneos</h2>
       <p class="lead">El club juega todo el año, con torneos para socios, invitados y causas.</p>
       <ul class="agenda">
         <li>
@@ -380,21 +389,26 @@ footer p{max-width:62ch}
         </li>
       </ul>
     </div>
+    <figure>
+      <div class="tile"><img src="img/podio-cuna.jpg" alt="Primer y segundo lugar del Torneo Anual Cuna del Golf 2026 con sus trofeos, frente a la lona de patrocinadores." width="1600" height="1066" loading="lazy"></div>
+      <figcaption>Podio del Torneo Anual Cuna del Golf 2026.</figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="sec sec--pino" id="amenidades">
+<section class="sec sec--foto" id="amenidades">
+  <div class="fondo" aria-hidden="true"><img src="img/dron-lago.jpg" alt="" width="1120" height="590" loading="lazy"></div>
   <div class="wrap amen">
     <div>
-      <h2>Después de la vuelta</h2>
-      <p class="lead suave">El club sigue cuando termina el juego.</p>
+      <h2 data-split>Después de la vuelta</h2>
+      <p class="lead suave">El club sigue cuando termina el juego, con comida gourmet o solo un buen rato.</p>
     </div>
-    <ul>
-      <li><strong>Restaurante y Hoyo 19</strong><span>Comida gourmet, o solo un buen rato.</span></li>
-      <li><strong>Alberca</strong></li>
-      <li><strong>Dos canchas de tenis</strong></li>
-      <li><strong>Vapor y sauna</strong><span>Con regaderas.</span></li>
-      <li><strong>Área infantil</strong></li>
+    <ul class="resumen">
+      <li>Restaurante y Hoyo 19</li>
+      <li>Alberca</li>
+      <li>Dos canchas de tenis</li>
+      <li>Vapor y sauna, con regaderas</li>
+      <li>Área infantil</li>
     </ul>
   </div>
 </section>
@@ -402,7 +416,7 @@ footer p{max-width:62ch}
 <section class="sec" id="tarifas">
   <div class="wrap">
     <div class="tarifas-cab">
-      <h2>Juega hoy o hazte socio</h2>
+      <h2 data-split>Juega hoy o hazte socio</h2>
       <p class="lead">El campo está abierto al público. Pregunta por las tarifas vigentes y te respondemos el mismo día.</p>
     </div>
     <!-- PENDIENTE: cambia "Consultar" por el precio real en cada fila (class="precio") y quita "precio--pendiente". -->
@@ -432,9 +446,10 @@ footer p{max-width:62ch}
 <section class="sec sec--pino" id="contacto">
   <div class="wrap contacto">
     <div>
-      <h2>Reserva tu salida</h2>
+      <h2 data-split>Reserva tu salida</h2>
       <p class="lead suave">Dinos cuándo quieres venir y te confirmamos el horario.</p>
-      <!-- PENDIENTE: confirmar que 771 711 3077 recibe WhatsApp. Si no, cambia WA_NUM por el número correcto, con 52 al inicio. -->
+      <p class="clima" id="clima" hidden></p>
+      <!-- PENDIENTE: confirmar que 771 711 3077 recibe WhatsApp. Si no, cambia data-wa por el número correcto, con 52 al inicio. -->
       <form class="form" id="form" data-wa="527717113077">
         <div class="campo-f campo-f--ancho">
           <label for="f-nombre">Nombre</label>
@@ -496,12 +511,22 @@ footer p{max-width:62ch}
   </div>
 </footer>
 
+<dialog class="visor" id="visor" aria-label="Foto ampliada">
+  <button type="button" class="visor__x" aria-label="Cerrar">Cerrar</button>
+  <button type="button" class="visor__ant" aria-label="Foto anterior">←</button>
+  <img alt="" width="1600" height="1060">
+  <button type="button" class="visor__sig" aria-label="Foto siguiente">→</button>
+  <p class="visor__pie"></p>
+</dialog>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
 <script>
 (function(){
-  var nav=document.getElementById('nav');
-  function onScroll(){nav.classList.toggle('is-solid',window.scrollY>40)}
-  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
-
+  var root=document.documentElement;
+  var q=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  /* ---------- funciones básicas (no dependen de GSAP) ---------- */
   var menu=document.getElementById('menu'),panel=document.getElementById('panel');
   function cerrar(){panel.classList.remove('is-abierto');menu.setAttribute('aria-expanded','false')}
   menu.addEventListener('click',function(){
@@ -512,11 +537,6 @@ footer p{max-width:62ch}
 
   var film=document.getElementById('film');
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){film.removeAttribute('autoplay');film.pause()}
-
-  var tira=document.getElementById('tira');
-  function paso(d){tira.scrollBy({left:d*Math.round(tira.clientWidth*.7),behavior:'smooth'})}
-  document.getElementById('ant').addEventListener('click',function(){paso(-1)});
-  document.getElementById('sig').addEventListener('click',function(){paso(1)});
 
   var hoy=new Date();hoy.setMinutes(hoy.getMinutes()-hoy.getTimezoneOffset());
   document.getElementById('f-fecha').min=hoy.toISOString().slice(0,10);
@@ -530,6 +550,159 @@ footer p{max-width:62ch}
       'Nombre: '+v('nombre')+'\nDía: '+dia+'\nHorario: '+v('hora')+'\nJugadores: '+v('jug')+'\nVoy a: '+v('tipo');
     window.open('https://wa.me/'+f.dataset.wa+'?text='+encodeURIComponent(msg),'_blank','noopener');
   });
+
+  /* visor: toca una foto para verla grande */
+  var visor=document.getElementById('visor');
+  if(visor&&visor.showModal){
+    var fotos=q('.tile'),idx=0,vi=visor.querySelector('img'),pie=visor.querySelector('.visor__pie');
+    var mostrar=function(i){
+      idx=(i+fotos.length)%fotos.length;
+      var im=fotos[idx].querySelector('img');
+      vi.src=im.currentSrc||im.src;vi.alt=im.alt;pie.textContent=im.alt;
+    };
+    var abrir=function(i){
+      mostrar(i);visor.showModal();
+      if(window.gsap&&root.classList.contains('js'))gsap.fromTo(vi,{opacity:0,scale:.96},{opacity:1,scale:1,duration:.5,ease:'expo.out'});
+    };
+    fotos.forEach(function(t,i){
+      t.setAttribute('role','button');t.tabIndex=0;t.setAttribute('aria-label','Ver foto grande');
+      t.addEventListener('click',function(){abrir(i)});
+      t.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();abrir(i)}});
+    });
+    visor.querySelector('.visor__x').addEventListener('click',function(){visor.close()});
+    visor.querySelector('.visor__ant').addEventListener('click',function(){mostrar(idx-1)});
+    visor.querySelector('.visor__sig').addEventListener('click',function(){mostrar(idx+1)});
+    visor.addEventListener('click',function(e){if(e.target===visor)visor.close()});
+    visor.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')mostrar(idx-1);if(e.key==='ArrowRight')mostrar(idx+1)});
+  }
+
+  /* dato vivo: el clima de hoy en Pachuca (Open-Meteo, sin llave). Si falla, no se muestra. */
+  var clima=document.getElementById('clima');
+  if(clima&&window.fetch){
+    var cielo=function(c){
+      if(c===0)return 'despejado';if(c<=2)return 'parcialmente nublado';if(c===3)return 'nublado';
+      if(c===45||c===48)return 'con niebla';if(c>=51&&c<=57)return 'con llovizna';if(c>=61&&c<=67)return 'con lluvia';
+      if(c>=71&&c<=77)return 'con nieve';if(c>=80&&c<=82)return 'con chubascos';if(c>=95)return 'con tormenta';return '';
+    };
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=20.12&longitude=-98.73&current=temperature_2m,weather_code,wind_speed_10m&timezone=America%2FMexico_City')
+      .then(function(r){return r.json()})
+      .then(function(d){
+        var c=d.current,t=Math.round(c.temperature_2m),v=Math.round(c.wind_speed_10m),k=cielo(c.weather_code);
+        clima.textContent='Hoy en Pachuca: '+t+' °C'+(k?', '+k:'')+', viento de '+v+' km/h.';
+        clima.hidden=false;
+        if(window.gsap&&root.classList.contains('js'))gsap.from(clima,{y:14,opacity:0,duration:.9,ease:'expo.out'});
+      }).catch(function(){});
+  }
+
+  /* ---------- animación (GSAP). Sin JS o con movimiento reducido, todo se ve estático ---------- */
+  if(!root.classList.contains('js'))return;
+  if(!(window.gsap&&window.ScrollTrigger&&window.SplitText)){root.classList.remove('js');return}
+  gsap.registerPlugin(ScrollTrigger,SplitText);
+  ScrollTrigger.config({ignoreMobileResize:true});
+  var once=function(el,start){return{trigger:el,start:start||'top 86%',once:true}};
+
+  /* portada: marco que se dibuja, escudo que baja, titular por líneas */
+  var tl=gsap.timeline();
+  tl.from('.nav',{yPercent:-100,duration:.9,ease:'expo.out'},0)
+    .from('.hero__media',{scale:1.12,duration:2.8,ease:'expo.out'},0)
+    .from('.frame__escudo',{y:-80,opacity:0,duration:1.1,ease:'expo.out'},.1)
+    .from('.fl-tl,.fl-tr',{scaleX:0,duration:.9,ease:'power3.inOut'},.3)
+    .from('.fl-l,.fl-r',{scaleY:0,duration:1.1,ease:'power3.inOut'},.75)
+    .from('.fl-b',{scaleX:0,duration:.9,ease:'power3.inOut'},1.5)
+    .from('.hero__meta',{y:26,opacity:0,duration:.9,ease:'expo.out'},1.3)
+    .from('.hero__acciones .btn',{y:26,opacity:0,duration:.8,stagger:.1,ease:'expo.out'},1.45);
+  SplitText.create('.hero h1',{type:'lines',mask:'lines',linesClass:'ln',autoSplit:true,onSplit:function(s){
+    gsap.set('.hero h1',{visibility:'visible'});
+    return gsap.from(s.lines,{yPercent:120,duration:1.2,stagger:.14,ease:'expo.out',delay:.55});
+  }});
+
+  /* portada: al bajar, el video se aleja y el texto sube */
+  var cab={trigger:'.hero',start:'top top',end:'bottom top',scrub:true};
+  gsap.to('.hero__video',{yPercent:14,scale:1.1,ease:'none',scrollTrigger:cab});
+  gsap.to('.hero__cuerpo',{yPercent:-22,opacity:0,ease:'none',scrollTrigger:cab});
+
+  /* titulares: cada línea sube desde una máscara */
+  q('[data-split]').forEach(function(el){
+    SplitText.create(el,{type:'lines',mask:'lines',linesClass:'ln',autoSplit:true,onSplit:function(s){
+      gsap.set(el,{visibility:'visible'});
+      return gsap.from(s.lines,{yPercent:120,duration:1.15,stagger:.1,ease:'expo.out',scrollTrigger:once(el,'top 88%')});
+    }});
+  });
+
+  /* fotos que se abren como ventana, con un movimiento lento adentro */
+  function ventana(tile){
+    gsap.fromTo(tile,{clipPath:'inset(14% 14% 14% 14%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.5,ease:'expo.out',clearProps:'clipPath',scrollTrigger:once(tile,'top 88%')});
+  }
+  function lento(tile){
+    var img=tile.querySelector('img');
+    gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:tile,start:'top bottom',end:'bottom top',scrub:true}});
+  }
+  q('.historia .tile,.torneos .tile').forEach(function(t){ventana(t);lento(t)});
+
+  /* historia: el párrafo principal se va llenando de tinta, palabra por palabra, al bajar */
+  SplitText.create('.historia .lead',{type:'words',autoSplit:true,onSplit:function(s){
+    return gsap.fromTo(s.words,{opacity:.2},{opacity:1,stagger:.06,ease:'none',scrollTrigger:{trigger:'.historia .lead',start:'top 82%',end:'bottom 52%',scrub:true}});
+  }});
+
+  /* historia: párrafos */
+  gsap.from('.historia .prosa p',{y:30,duration:1.1,stagger:.15,ease:'expo.out',scrollTrigger:once('.historia .prosa')});
+
+  /* campo: texto, cifras que ruedan, mosaico que se descubre por tiles */
+  gsap.from('#campo .cab .lead',{y:30,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:once('#campo .cab')});
+  gsap.from('.cifras li',{y:40,opacity:0,duration:1.1,stagger:.12,ease:'expo.out',scrollTrigger:once('.cifras','top 88%')});
+  q('.cifras b').forEach(function(b){
+    var fin=+b.dataset.n,ini=+b.dataset.from,sep=b.dataset.sep,o={v:ini};
+    b.textContent=sep?ini.toLocaleString('en-US'):ini;
+    gsap.to(o,{v:fin,duration:2.4,ease:'power3.out',scrollTrigger:once('.cifras','top 88%'),
+      onUpdate:function(){var n=Math.round(o.v);b.textContent=sep?n.toLocaleString('en-US'):n},
+      onComplete:function(){b.textContent=sep?fin.toLocaleString('en-US'):fin}});
+  });
+  var tiles=q('.mosaico .tile');
+  gsap.set(tiles,{clipPath:'inset(0 0 100% 0)'});
+  ScrollTrigger.batch(tiles,{start:'top 92%',once:true,onEnter:function(b){
+    gsap.to(b,{clipPath:'inset(0 0 0% 0)',duration:1.2,stagger:.12,ease:'expo.out',clearProps:'clipPath'});
+  }});
+  tiles.forEach(lento);
+
+  /* clases: la columna entra por partes y la foto se abre hasta el borde de la pantalla al bajar */
+  gsap.from('.clases-der .lead',{y:30,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:once('.clases-der')});
+  gsap.from('.niveles li',{x:-24,opacity:0,duration:.9,stagger:.1,ease:'expo.out',scrollTrigger:once('.niveles','top 90%')});
+  gsap.from('.clases-der .btn',{y:20,opacity:0,duration:.9,ease:'expo.out',scrollTrigger:once('.clases-der .btn','top 94%')});
+  q('.banda .tile').forEach(function(t){
+    var L=function(){return Math.round(document.querySelector('#clases .cab').getBoundingClientRect().left)};
+    gsap.fromTo(t,{clipPath:function(){return 'inset(0px '+L()+'px)'}},{clipPath:'inset(0px 0px)',ease:'none',scrollTrigger:{trigger:t,start:'top 88%',end:'top 18%',scrub:true,invalidateOnRefresh:true}});
+    lento(t);
+  });
+
+  /* torneos: el texto y las fechas llegan desde la derecha */
+  gsap.from('.torneos .lead',{y:30,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:once('.torneos .lead')});
+  gsap.from('.agenda li',{x:56,opacity:0,duration:1.1,stagger:.16,ease:'expo.out',scrollTrigger:once('.agenda','top 90%')});
+
+  /* después de la vuelta: la foto de fondo se mueve más lento que el texto */
+  gsap.fromTo('.fondo img',{yPercent:-7},{yPercent:7,ease:'none',scrollTrigger:{trigger:'.sec--foto',start:'top bottom',end:'bottom top',scrub:true}});
+  gsap.from('.amen .lead',{y:26,opacity:0,duration:1,ease:'expo.out',scrollTrigger:once('.amen .lead')});
+  gsap.from('.resumen li',{x:-36,opacity:0,duration:1.1,stagger:.12,ease:'expo.out',scrollTrigger:once('.resumen','top 90%')});
+
+  /* tarifas: cada fila se rellena como tinta, de izquierda a derecha */
+  gsap.from('#tarifas .lead',{y:30,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:once('#tarifas .lead')});
+  gsap.fromTo('.tarifas li',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:1.2,stagger:.14,ease:'expo.out',clearProps:'clipPath',scrollTrigger:once('.tarifas','top 90%')});
+
+  /* contacto */
+  gsap.from('#contacto .lead',{y:26,opacity:0,duration:1,ease:'expo.out',scrollTrigger:once('#contacto .lead')});
+  gsap.from('.form > *',{y:26,opacity:0,duration:.9,stagger:.07,ease:'expo.out',scrollTrigger:once('.form','top 90%')});
+  gsap.from('.visita > *, .visita li',{y:22,opacity:0,duration:.9,stagger:.08,ease:'expo.out',scrollTrigger:once('.visita','top 90%')});
+
+  /* botones: se hunden un poco al presionar */
+  q('.btn').forEach(function(b){
+    var d=function(){gsap.to(b,{scale:.96,duration:.12,ease:'power2.out',overwrite:'auto'})};
+    var u=function(){gsap.to(b,{scale:1,duration:.4,ease:'expo.out',overwrite:'auto'})};
+    b.addEventListener('pointerdown',d);
+    ['pointerup','pointerleave','pointercancel'].forEach(function(t){b.addEventListener(t,u)});
+  });
+
+  /* la página cambia de alto al cargar fuentes y fotos: recalcular */
+  window.addEventListener('load',function(){ScrollTrigger.refresh()});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){ScrollTrigger.refresh()});
 })();
 </script>
 </body>
